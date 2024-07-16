@@ -1,6 +1,8 @@
 import {
   Component,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -11,4 +13,10 @@ import {
 export class ButtonComponent {
   @Input() text: string | undefined;
   @Input() color: string | undefined;
+  @Output() btnClick = new EventEmitter();
+
+
+  onClick() {
+    this.btnClick.emit();
+  }
 }
