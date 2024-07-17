@@ -1,9 +1,11 @@
 import {
   Component,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import {Task} from "../../Task";
+import { Task } from "../../Task";
 
 @Component({
   selector: 'app-task-item',
@@ -11,7 +13,13 @@ import {Task} from "../../Task";
   styleUrls: ['./task-item.component.css']
 })
 export class TaskItemComponent {
-  @Input() task: Task | undefined;
+  @Input() task: Task | any;
+  @Output() onDeleteTask = new EventEmitter<Task>
 
   faTimes = faTimes;
+
+
+  onDelete(task: Task) {
+    this.onDeleteTask.emit(task);
+  }
 }
