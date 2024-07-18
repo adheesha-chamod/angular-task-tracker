@@ -15,11 +15,16 @@ import { Task } from "../../Task";
 export class TaskItemComponent {
   @Input() task: Task | any;
   @Output() onDeleteTask = new EventEmitter<Task>
+  @Output() onToggleReminder = new EventEmitter<Task>();
 
   faTimes = faTimes;
 
 
   onDelete(task: Task) {
     this.onDeleteTask.emit(task);
+  }
+
+  onToggle(task: Task) {
+    this.onToggleReminder.emit(task);
   }
 }
